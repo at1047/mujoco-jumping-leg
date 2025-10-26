@@ -6,24 +6,28 @@
     <light diffuse=".5 .5 .5" pos="0 0 3" dir="0 0 -1"/>
     <geom type="plane" size="1 1 0.1" rgba=".9 0 0 1"/>
 
-      <body pos="0 0 2.970" euler="0 0 0">
-        <joint name="torso_x" type="slide" axis="1 0 0" pos="0 0 0"/>  <!-- x-direction sliding -->
-        <joint name="torso_z" type="slide" axis="0 0 1" pos="0 0 0"/>  <!-- z-direction sliding -->
-        <joint name="pin2" type="hinge" axis = "0 -1 0" pos="0 0 0.75"/>
-        <geom type="cylinder" size="0.05 0.75" rgba="0 0 .9 1" mass="0.15"/>
+    <body pos="0 0 0" euler="0 0 0">
+      <joint name="torso_x" type="slide" axis="1 0 0" pos="0 0 0"/>  <!-- x-direction sliding -->
+      <joint name="torso_z" type="slide" axis="0 0 1" pos="0 0 0"/>  <!-- z-direction sliding -->
+      <joint name="pin2" type="hinge" axis = "0 -1 0" pos="0 0 0"/>
+      <geom type="cylinder" size="0.05 0.75" rgba="0 0 .9 1" mass="0.15"/>
 
 
-        <body pos="0 0 -1.5" euler="0 0 0">
-          <joint name="pin3" type="hinge" axis = "0 -1 0" pos="0 0 0.75"/>
-          <geom type="cylinder" size="0.05 0.75" rgba=".9 0 .9 1" mass="0.15"/>
-        </body>
-
-        <body name="torso" pos="0 0.1 0.75" euler="0 0 0">
-          <!-- Sliding joints to constrain torso to x-z plane -->
-          <joint name="torso_rot" type="hinge" axis="0 1 0" pos="0 0 0"/> <!-- rotation around y-axis -->
-          <geom type="cylinder" size="0.05 0.5" rgba="0 .9 0 1" mass="0.8"/>
-          </body>
+      <body pos="0 0 -1.5" euler="0 0 0">
+        <joint name="pin3" type="hinge" axis = "0 -1 0" pos="0 0 0.75"/>
+        <geom type="cylinder" size="0.05 0.75" rgba=".9 0 .9 1" mass="0.15"/>
       </body>
+
+      <body name="torso" pos="0 0 0.75" euler="0 0 0">
+        <!-- Sliding joints to constrain torso to x-z plane -->
+        <joint name="torso_rot" type="hinge" axis="0 1 0" pos="0 0 0"/> <!-- rotation around y-axis -->
+        <geom type="sphere" size="0.1" rgba="0 .9 0 1" mass="0.8"/>
+      </body>
+    </body>
+
+    <body name="marker_body" mocap="true" pos="0 0 0">
+       <site name="target_position" pos="0 0 0" size="0.05" rgba="1 0 0 0.8" type="sphere"/>
+    </body>
 
   </worldbody>
   <actuator>
@@ -40,7 +44,7 @@
     <!-- <position name="pin2_position" joint="pin2"/>
     <position name="pin3_position" joint="pin3"/>
     <position name="torso_rot_position" joint="torso_rot"/> -->
-    
+
   </actuator>
   <!-- <sensor> -->
   <!-- 	<jointpos joint="pin" noise="0.2"/> -->
